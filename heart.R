@@ -14,6 +14,25 @@ heart = c('heart_before1', 'heart_before2', 'heart_before3', 'heart_before4',
 org_dat %>%
   mutate(mean_heart = rowMeans(cur_data()[,heart], na.rm=T)) -> mean_dat
 
+##회귀식 하나씩##
+#model1
+model1 <- 'score ~ mean_heart'
+fit_1 = sem(model = model1, estimator = "ML", missing = "fiml",
+                data = mean_dat, meanstructure = T)
+summary(fit_1, fit.measures = T, standardized = T)
+#model2
+model2 <- 'score ~ mean_heart + age + female + worldranking + rankinground_rank 
+          + stage + set_number + shoot_order + countdown + arrows'
+fit2 <- sem(model = model2, estimator = "ML", missing = "fiml",
+            data = mean_dat, meanstructure = T)
+summary(fit2, fit.measures = T, standardized = T)
+#model3
+model3 <- 'score ~ mean_heart'
+fit3 <- sem(model = model3, estimator = "ML", missing = "fiml",
+            data = mean_dat, meanstructure = T, index = mean_dat$match_name_id)   #id를 match_name_id 기준으로 분석하려면 어떻게 해야하지..?
+summary(fit3, fit.measures = T, standardized = T)
+
+##
 heart_fa <- 'ind =~ age + female + rankinground_rank + worldranking
               Arrow =~ set_number + arrows + shoot_order + countdown'
 fit_fa = cfa(heart_fa, data=mean_dat)
