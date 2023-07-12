@@ -27,11 +27,15 @@ fit2 <- sem(model = model2, estimator = "ML", missing = "fiml",
             data = mean_dat, meanstructure = T)
 summary(fit2, fit.measures = T, standardized = T)
 #model3
-model3 <- 'score ~ mean_heart'
+model3 <- 'score ~ mean_heart + match_name_id'
 fit3 <- sem(model = model3, estimator = "ML", missing = "fiml",
-            data = mean_dat, meanstructure = T, index = mean_dat$match_name_id)   #id를 match_name_id 기준으로 분석하려면 어떻게 해야하지..?
+            data = mean_dat, meanstructure = T)
 summary(fit3, fit.measures = T, standardized = T)
-
+#model4
+model4 <- 'score ~ mean_heart  + set_number + shoot_order + countdown + arrows'
+fit4 <- sem(model = model4, estimator = "ML", missing = "fiml",
+            data = mean_dat, meanstructure = T)
+summary(fit4, fit.measures = T, standardized = T)
 ##
 heart_fa <- 'ind =~ age + female + rankinground_rank + worldranking
               Arrow =~ set_number + arrows + shoot_order + countdown'
