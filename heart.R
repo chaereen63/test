@@ -14,9 +14,9 @@ heart = c('heart_before1', 'heart_before2', 'heart_before3', 'heart_before4',
 org_dat %>%
   mutate(mean_heart = rowMeans(cur_data()[,heart], na.rm=T)) -> mean_dat
 write.csv(mean_dat,file="data2.csv")
-summary(lm(score ~ mean_heart,data=mean_dat))
+summary(lm(score ~ mean_heart,data = mean_dat))
 summary(lm(score ~ mean_heart + age + female + worldranking + rankinground_rank 
-           + stage + set_number + shoot_order + countdown + arrows,data=mean_dat))
+           + stage + set_number + shoot_order + countdown + arrows,data = mean_dat))
 aa <- lm(score ~ mean_heart + factor(match_name_id),data=mean_dat)
 
 summary(aa)
@@ -36,16 +36,27 @@ summary(fit2, fit.measures = T, standardized = T)
 model3 <- 'level: 1
             score ~ mean_heart
             level: 2
-            score
+            score ~~ score
             '
-fit3 <- sem(model = model1, estimator = "ML", missing = "fiml",
-            cluster = "match_name_id", data = mean_dat, meanstructure = T)
+fit3 <- sem(model = model3, data = mean_dat, cluster = "match_name_id")
 summary(fit3, fit.measures = T, standardized = T)
 #model4
-model4 <- 'score ~ mean_heart  + set_number + shoot_order + countdown + arrows'
-fit4 <- sem(model = model4, estimator = "ML", missing = "fiml",
-            data = mean_dat, meanstructure = T)
+model4 <- 'level: 1
+            score ~ mean_heart + shoot_order + countdown + arrows
+            level: 2
+            score ~ mean_heart + stage + set_number + age + female + worldranking + rankinground_rank
+          '
+fit4 <- sem(model = model4, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
 summary(fit4, fit.measures = T, standardized = T)
+#model5
+model5 <- 'level: 1
+            score ~ mean_heart
+            mean_heart ~ set_number + shoot_order + countdown + arrows
+            level: 2
+            score ~ age + female + worldranking + rankinground_rank
+          '
+fit5 <- sem(model = model5, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
+summary(fit5, fit.measures = T, standardized = T)
 ##
 heart_fa <- 'ind =~ age + female + rankinground_rank + worldranking
               Arrow =~ set_number + arrows + shoot_order + countdown'
