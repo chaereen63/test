@@ -42,9 +42,9 @@ fit3 <- sem(model = model3, data = mean_dat, cluster = "match_name_id")
 summary(fit3, fit.measures = T, standardized = T)
 #model4
 model4 <- 'level: 1
-            score ~ mean_heart + shoot_order + countdown + arrows
+            score ~ mean_heart +  set_number + shoot_order + countdown + arrows
             level: 2
-            score ~ mean_heart + stage + set_number + age + female + worldranking + rankinground_rank
+            score ~ mean_heart + age + female + worldranking + rankinground_rank
           '
 fit4 <- sem(model = model4, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
 summary(fit4, fit.measures = T, standardized = T)
@@ -57,6 +57,14 @@ model5 <- 'level: 1
           '
 fit5 <- sem(model = model5, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
 summary(fit5, fit.measures = T, standardized = T)
+#model6
+model6 <- 'level: 1
+            score ~ mean_heart + set_number + shoot_order + countdown + arrows
+            level: 2
+            score ~ stage + age + female + worldranking + rankinground_rank
+          '
+fit6 <- sem(model = model6, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
+summary(fit6, fit.measures = T, standardized = T)
 ##
 heart_fa <- 'ind =~ age + female + rankinground_rank + worldranking
               Arrow =~ set_number + arrows + shoot_order + countdown'
