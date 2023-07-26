@@ -14,9 +14,15 @@ heart = c('heart_before1', 'heart_before2', 'heart_before3', 'heart_before4',
 org_dat %>%
   mutate(mean_heart = rowMeans(cur_data()[,heart], na.rm=T)) -> mean_dat
 write.csv(mean_dat,file="data2.csv")
+<<<<<<< HEAD
 summary(lm(score ~ mean_heart,data = mean_dat))
 summary(lm(score ~ mean_heart + age + female + worldranking + rankinground_rank 
            + stage + set_number + shoot_order + countdown + arrows,data = mean_dat))
+=======
+summary(lm(score ~ mean_heart,data=mean_dat))
+summary(lm(score ~ mean_heart + age + female + worldranking + rankinground_rank 
+           + stage + set_number + shoot_order + countdown + arrows,data=mean_dat))
+>>>>>>> f89c84dc6fe5667838a9351fa510500a96fb6cc9
 aa <- lm(score ~ mean_heart + factor(match_name_id),data=mean_dat)
 
 summary(aa)
@@ -36,9 +42,16 @@ summary(fit2, fit.measures = T, standardized = T)
 model3 <- 'level: 1
             score ~ mean_heart
             level: 2
+<<<<<<< HEAD
             score ~~ score
             '
 fit3 <- sem(model = model3, data = mean_dat, cluster = "match_name_id")
+=======
+            score
+            '
+fit3 <- sem(model = model1, estimator = "ML", missing = "fiml",
+            cluster = "match_name_id", data = mean_dat, meanstructure = T)
+>>>>>>> f89c84dc6fe5667838a9351fa510500a96fb6cc9
 summary(fit3, fit.measures = T, standardized = T)
 #model4
 model4 <- 'level: 1
