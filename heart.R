@@ -47,11 +47,10 @@ model3 <- 'level: 1
             '
 fit3 <- sem(model = model3, data = mean_dat, cluster = "match_name_id")
 =======
-            score
-            '
+            
 fit3 <- sem(model = model1, estimator = "ML", missing = "fiml",
             cluster = "match_name_id", data = mean_dat, meanstructure = T)
->>>>>>> f89c84dc6fe5667838a9351fa510500a96fb6cc9
+
 summary(fit3, fit.measures = T, standardized = T)
 #model4
 model4 <- 'level: 1
@@ -70,6 +69,9 @@ model5 <- 'level: 1
           '
 fit5 <- sem(model = model5, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
 summary(fit5, fit.measures = T, standardized = T)
+
+fit5_1 <- sem(model = model5, data = mean_dat, cluster = "match_name_id")
+summary(fit5_1, fit.measures = T, standardized = T)
 #model6
 model6 <- 'level: 1
             score ~ mean_heart + set_number + shoot_order + countdown + arrows
@@ -85,25 +87,6 @@ fit_fa = cfa(heart_fa, data=mean_dat)
 summary(fit_fa, fit.measures = T, standardized = T)
 fit_fa %>% modificationindices() %>% arrange(mi)
 
-#측정변수로만
-heart_simp <- 'score ~ mean_heart + female + rankinground_rank + set_number + shoot_order
-              mean_heart ~ set_number + arrows + shoot_order + countdown + worldranking + rankinground_rank'
 
-fit_heart0 = sem(model = heart_simp, estimator = "ML", missing = "pairwise",
-                data = mean_dat, meanstructure = F)
-#varTable(fit_heart0)
-summary(fit_heart0, fit.measures = T, standardized = T)
-fit_heart0 %>% modificationindices() %>% arrange(mi)
-semPaths(fit_heart0, what = 'est', style = 'lisrel')
 
-####latent####
-heart_mod <- 'ind =~ age + female + rankinground_rank + worldranking
-              Arrow =~ set_number + arrows + shoot_order + countdown
-              score ~ mean_heart
-              mean_heart ~ ind + Arrow'
-
-fit_heart = sem(model = heart_mod, estimator = "ML", missing = "fiml",
-                data = mean_dat, meanstructure = T)
-varTable(fit_heart)
-summary(fit_heart, fit.measures = T, standardized = T)
 
