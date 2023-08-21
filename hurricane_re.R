@@ -20,6 +20,7 @@ na #허리케인 이후 보고가 0인 부부의 수
 hurri %>%
   mutate(NN = replace(NN, rowSums(is.na(na_time)) == 6, 1)) %>%
   mutate(NN = replace(NN, rowSums(is.na(na_time)) != 6, 0))-> hurri_na #success~*^0^* replace 함수로 특정 열의 값 대체
+hurri_na %>% filter(NN==1) %>% count()
 # NN 변수로 두 부부집단의 초기 관계만족도 차이 검정(t-test)
 t.test(hrelsat1 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wrelsat1 ~ NN, hurri_na, var.equal=TRUE)
@@ -28,3 +29,11 @@ t.test(hps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(hsupp3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wsupp3 ~ NN, hurri_na, var.equal=TRUE)
+#기술통계표 만들기
+
+hurri_na %>% 
+  select(hrelsat1, hrelsat2, hrelsat3, hrelsat5, 
+                     hrelsat6, hrelsat7, hexposure, hps3, hsupp3) %>% mean() -> table
+summary(hurri_na)
+hurri_na$hrelsat1
+table()
