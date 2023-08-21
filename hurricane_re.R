@@ -43,3 +43,4 @@ mainhr <- read_csv("scales_datafile_v3long_rev.csv")
 mainhr %>% mutate(preHw = ifelse(time<0, Wife*time, 0), preHh = ifelse(time<0, Husb*time, 0), 
                   postHw = ifelse(time>0, Wife*time, 0), postHh = ifelse(time>0, Husb*time, 0),
                   WJump = ifelse(time>0,Wife*1,0), HJump = ifelse(time>0,Husb*1,0))-> mainHr #귀찮아서 Wife, Husb 곱하는 절차를 합침.
+#main
