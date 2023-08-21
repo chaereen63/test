@@ -30,11 +30,16 @@ t.test(wps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(hsupp3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wsupp3 ~ NN, hurri_na, var.equal=TRUE)
 #기술통계표 만들기
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6edeec1dc51e5cbd34db7be45859b1329d115d6e
 hurri_na %>% 
   select(hrelsat1, hrelsat2, hrelsat3, hrelsat5, 
                      hrelsat6, hrelsat7, hexposure, hps3, hsupp3) %>% mean() -> table
 summary(hurri_na)
 hurri_na$hrelsat1
+<<<<<<< HEAD
 table()
 
 ## main effect analysis
@@ -44,3 +49,6 @@ mainhr %>% mutate(preHw = ifelse(time<0, Wife*time, 0), preHh = ifelse(time<0, H
                   postHw = ifelse(time>0, Wife*time, 0), postHh = ifelse(time>0, Husb*time, 0),
                   WJump = ifelse(time>0,Wife*1,0), HJump = ifelse(time>0,Husb*1,0))-> mainHr #귀찮아서 Wife, Husb 곱하는 절차를 합침.
 #main
+=======
+table()
+>>>>>>> 6edeec1dc51e5cbd34db7be45859b1329d115d6e
