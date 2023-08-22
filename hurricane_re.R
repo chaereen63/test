@@ -29,11 +29,8 @@ t.test(hps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(hsupp3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wsupp3 ~ NN, hurri_na, var.equal=TRUE)
-#기술통계표 만들기
-
-hurri_na %>% 
-  select(hrelsat1, hrelsat2, hrelsat3, hrelsat5, 
-                     hrelsat6, hrelsat7, hexposure, hps3, hsupp3) %>% mean() -> table
-summary(hurri_na)
-hurri_na$hrelsat1
-table()
+#기술통계
+hurri_na %>% select(hrelsat1, hrelsat2, hrelsat3, hrelsat5, hrelsat6, hrelsat7, hexposure, hps3, hsupp3,
+                    wrelsat1, wrelsat2, wrelsat3, wrelsat5, wrelsat6, wrelsat7, wexposure, wps3, wsupp3) %>%
+  summary() -> summar
+#시간변수 만들기
