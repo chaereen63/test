@@ -1,0 +1,7 @@
+
+1. Open project OSF_Factor_Forest in R and then open the Analysis Script
+2. Install packages if needed (mlr,psych,ineq,BBmisc,ddpcr)
+3. Add your Empirical Data to factor.forest() function
+4. Run Analysis Script
+
+When applying this method for your analysis, please use the citation provided at our OSF repository at "https://osf.io/mvrau/".
