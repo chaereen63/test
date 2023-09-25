@@ -45,6 +45,25 @@ model3 <- 'level: 1
             score ~~ score
             '
 fit3 <- sem(model = model3, data = mean_dat, cluster = "match_name_id")
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
+=======
+            
+fit3 <- sem(model = model1, estimator = "ML", missing = "fiml",
+            cluster = "match_name_id", data = mean_dat, meanstructure = T)
+<<<<<<< HEAD
+
+>>>>>>> 6edeec1dc51e5cbd34db7be45859b1329d115d6e
+summary(fit3, fit.measures = T, standardized = T)
+=======
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
+
+>>>>>>> 5e933773453c0bfd1b7bb52180ba1aebe78fb795
 summary(fit3, fit.measures = T, standardized = T)
 
 #model4
@@ -65,7 +84,23 @@ model5 <- 'level: 1
 fit5 <- sem(model = model5, data = mean_dat, cluster = "match_name_id")
 fit5.5 <- sem(model = model5, data = mean_dat, estimator = "ML", missing = "fiml", cluster = "match_name_id")
 summary(fit5, fit.measures = T, standardized = T)
+<<<<<<< HEAD
 summary(fit5.5, fit.measures = T, standardized = T)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+summary(fit5.5, fit.measures = T, standardized = T)
+=======
+
+fit5_1 <- sem(model = model5, data = mean_dat, cluster = "match_name_id")
+summary(fit5_1, fit.measures = T, standardized = T)
+>>>>>>> 6edeec1dc51e5cbd34db7be45859b1329d115d6e
+=======
+
+fit5_1 <- sem(model = model5, data = mean_dat, cluster = "match_name_id")
+summary(fit5_1, fit.measures = T, standardized = T)
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
+>>>>>>> 5e933773453c0bfd1b7bb52180ba1aebe78fb795
 #model6
 model6 <- 'level: 1
             score ~ mean_heart + set_number + shoot_order + countdown + arrows
@@ -74,3 +109,25 @@ model6 <- 'level: 1
           '
 fit6 <- sem(model = model6, data = mean_dat, cluster = "match_name_id")
 summary(fit6, fit.measures = T, standardized = T)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
+##
+heart_fa <- 'ind =~ age + female + rankinground_rank + worldranking
+              Arrow =~ set_number + arrows + shoot_order + countdown'
+fit_fa = cfa(heart_fa, data=mean_dat)
+summary(fit_fa, fit.measures = T, standardized = T)
+fit_fa %>% modificationindices() %>% arrange(mi)
+
+
+
+
+<<<<<<< HEAD
+>>>>>>> 6edeec1dc51e5cbd34db7be45859b1329d115d6e
+=======
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
+>>>>>>> 5e933773453c0bfd1b7bb52180ba1aebe78fb795

@@ -29,11 +29,19 @@ t.test(hps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wps3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(hsupp3 ~ NN, hurri_na, var.equal=TRUE)
 t.test(wsupp3 ~ NN, hurri_na, var.equal=TRUE)
+<<<<<<< HEAD
+#기술통계표 만들기
+hurri_na %>% 
+  select(hrelsat1, hrelsat2, hrelsat3, hrelsat5, 
+                     hrelsat6, hrelsat7, hexposure, hps3, hsupp3) %>% mean() -> table
+summary(hurri_na)
+=======
 
 #기술통계
 hurri_na %>% select(hrelsat1, hrelsat2, hrelsat3, hrelsat5, hrelsat6, hrelsat7, hexposure, hps3, hsupp3,
                     wrelsat1, wrelsat2, wrelsat3, wrelsat5, wrelsat6, wrelsat7, wexposure, wps3, wsupp3) %>%
   summary() -> summar
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
 
 ## main effect analysis
 mainhr <- read_csv("scales_datafile_v3long_rev.csv")
@@ -42,13 +50,20 @@ mainhr %>% mutate(preHw = ifelse(time<0, Wife*time, 0), preHh = ifelse(time<0, H
                   postHw = ifelse(time>0, Wife*time, 0), postHh = ifelse(time>0, Husb*time, 0),
                   WJump = ifelse(time>0,Wife*1,0), HJump = ifelse(time>0,Husb*1,0))-> mainHr #귀찮아서 Wife, Husb 곱하는 절차를 합침.
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
 #dual-intercept piecewise regression_mixed
 summary(lm(relsat ~ 1*Husb + preHh + HJump + postHh, data=mainHr)) #남편
 summary(lm(relsat ~ 1*Wife + preHw + WJump + postHw, data=mainHr)) #아내
 #남편, 아내 동시에
 summary(lm(relsat ~ 1*Husb + preHh + HJump + postHh +
+<<<<<<< HEAD
+                    1*Wife + preHw + WJump + postHw, data=mainHr))
+=======
              1*Wife + preHw + WJump + postHw, data=mainHr))
+>>>>>>> ef2e5561442dea882ebac7cc1195e37b938dc63d
 model1 <- 'relsat ~ 1*Husb + preHh + HJump + postHh
     relsat ~ 1*Wife + preHw + WJump + postHw
     '
