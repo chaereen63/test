@@ -12,9 +12,9 @@ lmmod_D <- '
             CTRLcln ~ 1 + ZDASS_D + CTRL_M
             Time ~ 1 + ZDASS_D + CTRL_M
             REAP_1 ~ 1 + ZDASS_D + CTRL_M'
-lm_D <- sem(model = lmmod_D, data = main_wis, cluster = "SEMA_ID", verbose = T, 
+#lm_D <- sem(model = lmmod_D, data = main_wis, cluster = "SEMA_ID", verbose = T, 
             optim.method = "em", em.iter.max = 10000, em.fx.tol = 1e-08, em.dx.tol = 1e-04) #수렴이 되지 않을 경우 em 알고리즘을 이용/ 10000이상으로 설정
-summary(lm_D)
+#summary(lm_D)
 
 
 #lmer package로 해보기
