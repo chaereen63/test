@@ -34,3 +34,4 @@ ranef(random.intercept.model) #each regression for ID
 context.model <- lmer(REAP ~ CTRLcln + Time + REAP_1 + CTRL_M + ZDASS_D +(1 | SEMA_ID), data = main_wis, REML = T)
 summary(context.model)
 intercept.as.outcome.model <- lmer(REAP ~ CTRLcln + Time + REAP_1 + CTRL_M + ZDASS_D +(1 | SEMA_ID), data = main_wis, REML = T)
+commit
