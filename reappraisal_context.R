@@ -74,3 +74,8 @@ intercept.slope.outcome <- lme(REAP ~  CTRLcln + Time + REAP_1 + ZDASS_D + CTRL_
 summary(intercept.slope.outcome)
 anova(intercept.slope.outcome, intercept.outcome)
 anova(intercept.slope.outcome, slope.outcome)
+
+intercept.slope.outcome_A<- lme(REAP ~  CTRLcln + Time + REAP_1 + ZDASS_A + CTRL_M + CTRLcln*ZDASS_A + Time*ZDASS_A + REAP_1*ZDASS_A + CTRLcln*CTRL_M + Time*CTRL_M + REAP_1*CTRL_M,
+                               random = ~ CTRLcln + Time + REAP_1 | SEMA_ID,
+                               main_wis, method = "ML", na.action = na.omit)
+summary(intercept.slope.outcome_A)
